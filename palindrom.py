@@ -34,20 +34,16 @@ def is_palindrom(
     if len(seq) < 2:
         raise ValueError
 
-    left_idx = 0
-    right_idx = -1
-    n_checks = round(len(seq)/2)
-    
-    for _ in range(n_checks):
-        if seq[left_idx] != seq[right_idx]:
-            return False
+    if seq == seq[::-1]:
         if type_sensitive:
-            if types[left_idx] != types[right_idx]:
+            if types == types[::-1]:
+                return True
+            else:
                 return False
         else:
-            left_idx, right_idx = left_idx+1, right_idx-1
-            continue      
-    return True
+            return True
+    else:
+        return False
 
 test_cases = {
     "check empty string":{
@@ -238,3 +234,4 @@ for note, test in test_cases.items():
             print(
                 f"Expected {test['expectation']!r} for case {test['case']} got {result!r}"
                 )
+
