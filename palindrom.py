@@ -1,19 +1,27 @@
 from typing import Iterable
 import string
 
-def is_palindrom(sequence, case_sensitive, type_sensitive, sentence_sensitive):
+def is_palindrom(
+    sequence,
+    case_sensitive: bool,
+    type_sensitive: bool,
+    sentence_sensitive: bool
+    ):
 
     if isinstance(sequence, Iterable):
         if isinstance(sequence, str):
             seq = sequence
-            seq=seq.translate(str.maketrans('', '', string.punctuation))
+            seq = seq.translate(str.maketrans('', '', string.punctuation))
             type_sensitive = False
+
             if case_sensitive is False:
                 seq = seq.lower()
+
             if sentence_sensitive:
                 seq = seq.split(" ")
             else:
                 seq = seq.translate(str.maketrans('', '', " "))
+
         else:
             if type_sensitive:
                 types = [type(item) for item in sequence]
@@ -23,12 +31,13 @@ def is_palindrom(sequence, case_sensitive, type_sensitive, sentence_sensitive):
     else:
         seq = str(sequence)
 
-    
     if len(seq) < 2:
         raise ValueError
+
     left_idx = 0
     right_idx = -1
     n_checks = round(len(seq)/2)
+    
     for _ in range(n_checks):
         if seq[left_idx] != seq[right_idx]:
             return False
