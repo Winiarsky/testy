@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
+
 def test_import_prime_factors():
     try:
         from prime import prime_factors  
