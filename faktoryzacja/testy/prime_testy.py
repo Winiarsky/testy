@@ -22,14 +22,15 @@ def test_return_list():
 
 def test_even_number_divisible():
     from prime import prime_factors
-    result = prime_factors(10)  
-    assert isinstance(result,list), "Filed - result is not list"
+    result = prime_factors(40)  
+    assert result == [2,2,2], "Filed - even number dvisible error"
 
 if __name__ == '__main__':
     for test in (
         test_import_prime_factors,
         test_intiger_argument,
         test_return_list,
+        test_even_number_divisible,
     ):  
         print(f'{test.__name__}: ', end='')
         try:
