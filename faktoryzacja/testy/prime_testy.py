@@ -22,7 +22,7 @@ def test_return_list():
 
 def test_even_number_divisible():
     from prime import prime_factors
-    result = prime_factors(40)  
+    result = prime_factors(8)  
     assert result == [2,2,2], "Filed - even number dvisible error"
 
 def test_odd_case_factor():
