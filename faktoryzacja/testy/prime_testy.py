@@ -42,6 +42,13 @@ def test_one_case():
     result = prime_factors(1)  
     assert result == [1], f"Filed - prime_factors(1) should be [1] got {result}"
 
+def test_only_positive_intiger_assertion():
+    from prime import prime_factors
+    try:
+        assert isinstance(prime_factors(-1), AttributeError), "Filed - only positive intigers can be applied"
+    except AttributeError:
+        return True
+
 
 if __name__ == '__main__':
     for test in (
@@ -52,6 +59,7 @@ if __name__ == '__main__':
         test_odd_case_factor,
         test_only_intiger_assertion,
         test_one_case,
+        test_only_positive_intiger_assertion,
     ):  
         print(f'{test.__name__}: ', end='')
         try:
