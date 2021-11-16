@@ -1,8 +1,12 @@
 import math
 def prime_factors(number: int) -> list:
+
     if not isinstance(number, int):
         raise AttributeError
     
+    if number <= 0:
+        raise AttributeError
+
     if number == 1:
         return [1]
 
@@ -23,5 +27,3 @@ def prime_factors(number: int) -> list:
         factors.append(number)
         
     return factors
-
-print(prime_factors(2))
