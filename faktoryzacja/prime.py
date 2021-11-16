@@ -1,5 +1,8 @@
 import math
 def prime_factors(number: int) -> list:
+    if not isinstance(number, int):
+        raise AttributeError
+
     factors = []
     #even number divisible
     while number % 2 == 0:
