@@ -2,6 +2,9 @@ import math
 def prime_factors(number: int) -> list:
     if not isinstance(number, int):
         raise AttributeError
+    
+    if number == 1:
+        return [1]
 
     factors = []
     #even number divisible
@@ -20,3 +23,5 @@ def prime_factors(number: int) -> list:
         factors.append(number)
         
     return factors
+
+print(prime_factors(2))
