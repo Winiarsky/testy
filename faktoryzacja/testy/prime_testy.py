@@ -30,6 +30,13 @@ def test_odd_case_factor():
     result = prime_factors(40)  
     assert result == [2,2,2,5], "Filed - odd number dvisible error"
 
+def test_only_intiger_assertion():
+    from prime import prime_factors
+    try:
+        assert isinstance(prime_factors(40.5), AttributeError), "Filed - not only intigers can be used"
+    except AttributeError:
+        return True
+
 
 if __name__ == '__main__':
     for test in (
@@ -38,6 +45,7 @@ if __name__ == '__main__':
         test_return_list,
         test_even_number_divisible,
         test_odd_case_factor,
+        test_only_intiger_assertion,
     ):  
         print(f'{test.__name__}: ', end='')
         try:
