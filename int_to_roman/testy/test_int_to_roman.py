@@ -5,4 +5,7 @@ def test_int_argument():
 
 def test_only_int_argument():
     with pytest.raises(AttributeError):
-        int_to_Roman("123") 
+        int_to_Roman("123")
+
+def test_return_string():
+    assert isinstance(int_to_Roman(999), str)
