@@ -13,3 +13,7 @@ def test_return_string():
 def test_translation_to_roman():
     result = int_to_Roman(991)
     assert result == "CMXCI"
+
+def test_only_positive():
+    with pytest.raises(AttributeError):
+        int_to_Roman(-2)
