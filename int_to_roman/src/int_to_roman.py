@@ -1,4 +1,4 @@
-def int_to_Roman(num: int):
+def int_to_Roman(num: int) -> str:
     if not isinstance(num, int):
         raise AttributeError
-    pass
+    return "ok"
