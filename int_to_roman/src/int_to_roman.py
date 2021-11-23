@@ -1,6 +1,8 @@
 def int_to_Roman(num: int) -> str:
     if not isinstance(num, int):
         raise AttributeError
+    if num < 0:
+        raise AttributeError
     val = [
             1000, 900, 500, 400,
             100, 90, 50, 40,
