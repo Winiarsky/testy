@@ -1,2 +1,2 @@
-def int_to_Roman():
+def int_to_Roman(num: int):
     pass
