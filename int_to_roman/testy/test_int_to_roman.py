@@ -9,3 +9,7 @@ def test_only_int_argument():
 
 def test_return_string():
     assert isinstance(int_to_Roman(999), str)
+
+def test_translation_to_roman():
+    result = int_to_Roman(991)
+    assert result == "CMXCI"
