@@ -1,0 +1,50 @@
+# Full fine-tuning FP16 (no LoRA)
+seed: 42
+base_model_path: /path/to/your/base/model
+output_dir: outputs/run-full
+adapter_dir: null
+
+# Data
+train_file: data/samples/train.jsonl
+eval_file: data/samples/eval.jsonl
+text_column: text
+max_seq_length: 1024
+packing: true
+
+# LoRA / PEFT
+use_lora: false
+lora: {}
+
+# Quantization
+load_in_4bit: false
+
+# Training
+bf16: false
+fp16: true
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-5
+weight_decay: 0.01
+num_train_epochs: 1
+warmup_ratio: 0.03
+lr_scheduler_type: cosine
+logging_steps: 10
+evaluation_strategy: steps
+eval_steps: 100
+save_steps: 200
+max_steps: -1
+gradient_checkpointing: false
+flash_attn: false
+
+# Tokenizer
+add_special_tokens: false
+pad_to_multiple_of: 8
+
+# Misc
+report_to: none
+push_to_hub: false
+use_gradient_checkpointing: false
+trust_remote_code: true
+
+method: sft
