@@ -1,0 +1,62 @@
+# Base setup for LoRA + 4-bit QLoRA fine-tuning
+seed: 42
+base_model_path: /path/to/your/base/model  # local path or HF repo id
+output_dir: outputs/run-qlora
+adapter_dir: adapters/run-qlora
+
+# Data
+train_file: data/samples/train.jsonl
+eval_file: data/samples/eval.jsonl
+text_column: text
+max_seq_length: 1024
+packing: true
+
+# LoRA / PEFT
+use_lora: true
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+# Quantization (QLoRA)
+load_in_4bit: true
+bnb_4bit_compute_dtype: float16
+bnb_4bit_use_double_quant: true
+bnb_4bit_quant_type: nf4
+
+# Training
+bf16: true
+fp16: false
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-4
+weight_decay: 0.0
+num_train_epochs: 1
+warmup_ratio: 0.03
+lr_scheduler_type: cosine
+logging_steps: 10
+evaluation_strategy: steps
+eval_steps: 100
+save_steps: 200
+max_steps: -1
+gradient_checkpointing: true
+flash_attn: auto  # auto/true/false depending on your env
+
+# Tokenizer
+add_special_tokens: false
+pad_to_multiple_of: 8
+
+# Misc
+report_to: none
+push_to_hub: false
+use_gradient_checkpointing: true
+trust_remote_code: true
+
+# DPO/SFT toggle (SFT by default)
+method: sft  # sft or dpo
+
+# DPO specific
+beta: 0.1
+loss_type: sigmoid
